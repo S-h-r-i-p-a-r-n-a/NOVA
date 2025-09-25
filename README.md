@@ -31,40 +31,13 @@ A **modern, responsive web-based chatbot** powered by **Google Gemini AI**. NOVA
 
 ## 🚀 Installation
 
-1. **Clone the repository**
+1️⃣ **Clone the repository**
 ```bash
 git clone https://github.com/yourusername/nova-chatbot.git
 cd nova-chatbot
 
----
+2️⃣ Install Dependencies
 
-📁 Folder Structure
-nova-chatbot/
-│
-├─ server.js           # Express backend server
-├─ package.json        # Node.js dependencies
-├─ .env                # API key for Google Gemini AI
-├─ index.html          # Frontend HTML
-├─ style.css           # Responsive chatbot styling
-├─ script.js           # Frontend chat JS
-└─ README.md           # Project documentation
+Make sure you have Node.js installed. Then run:
 
----
-
-🖼 Screenshots
-
-Desktop View:
-
-
-Mobile View:
-
----
-
-📦 Deployment
-
-Frontend can be hosted on Vercel
-
-Backend can be hosted on Render
- or Heroku
-
-Remember to add your .env with GEMINI_API_KEY on the backend host
+npm install
