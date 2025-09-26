@@ -35,8 +35,6 @@ A **modern, responsive web-based chatbot** powered by **Google Gemini AI**. NOVA
 ```bash
 git clone https://github.com/yourusername/nova-chatbot.git
 cd nova-chatbot
-\`\`\`
-2️⃣ Install Dependencies
+**```**
 
-Make sure you have Node.js v18+ installed. Then run:
-npm install
+HII
