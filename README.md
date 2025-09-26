@@ -41,3 +41,13 @@ cd nova-chatbot
 Make sure you have Node.js installed. Then run:
 
 npm install
+
+3️⃣ Set up Environment Variables
+
+Create a .env file in the project root and add your configuration:
+
+PORT=3000
+GEMINI_API_KEY=your_google_gemini_api_key
+
+4️⃣ Start the Development Server
+npm start
