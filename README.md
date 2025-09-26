@@ -41,3 +41,52 @@ cd nova-chatbot
 Make sure you have Node.js installed. Then run:
 
 npm install
+
+3️⃣ Set up Environment Variables
+
+Create a .env file in the project root and add your configuration:
+
+PORT=3000
+GEMINI_API_KEY=your_google_gemini_api_key
+
+4️⃣ Start the Development Server
+
+npm start
+
+5️⃣ Access the Chatbot
+
+Open your browser and navigate to:
+
+http://localhost:3000
+
+---
+
+## 🔧 Configuration
+
+- **PORT:** Change the server port in the `.env` file (default is 3000)  
+- **GEMINI_API_KEY:** Obtain your API key from [Google AI Studio](https://aistudio.google.com/app/apikey)  
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- **Google Gemini AI** for enabling natural language processing  
+- **Material Symbols** for beautiful iconography  
+- **Poppins Font** for a clean and modern typography  
+
+---
+
+## 🌐 Connect with Me
+
+- **GitHub:** [@yourusername](https://github.com/yourusername)  
+- **LinkedIn:** [Your Name](https://www.linkedin.com/in/yourname/)  
+- **Email:** [your.email@example.com](mailto:your.email@example.com)  
+
+---
+
