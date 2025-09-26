@@ -9,10 +9,19 @@ const port = 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('.')); // Serve static files from current directory
+app.use(express.static('.'));
 
 // Initialize Gemini AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+// Helper function to clean up the response text
+const cleanResponse = (text) => {
+    return text
+        .replace(/\*\*/g, '') // Remove markdown bold
+        .replace(/`/g, '') // Remove code ticks
+        .replace(/\n\n/g, '\n') // Replace double newlines with single
+        .trim(); // Remove extra whitespace
+};
 
 // Chat endpoint
 app.post('/api/chat', async (req, res) => {
@@ -24,16 +33,27 @@ app.post('/api/chat', async (req, res) => {
             return res.status(400).json({ error: 'Message is required' });
         }
 
-        // ✅ Use supported model
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-        // Generate content
-        const result = await model.generateContent({
-            contents: [{ parts: [{ text: message }] }]
+        // Configure the model
+        const model = genAI.getGenerativeModel({ 
+            model: "gemini-2.5-flash",
+            generationConfig: {
+                temperature: 0.7,
+                topK: 1,
+                topP: 0.8,
+                maxOutputTokens: 2048,
+            },
         });
 
+        // Create a more conversational prompt
+        const prompt = `You are NOVA, a friendly and helpful AI assistant. Respond in a natural, conversational way to: ${message}`;
+
+        // Generate content
+        const result = await model.generateContent(prompt);
         const response = await result.response;
-        const text = response.text();
+        let text = response.text();
+
+        // Clean up the response
+        text = cleanResponse(text);
 
         console.log('Final text:', text);
 
