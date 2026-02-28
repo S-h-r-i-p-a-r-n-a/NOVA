@@ -48,7 +48,7 @@ NOVA/
 │── .git/
 │── .vercel/
 │── api/
-│   └── chat.js        ← Serverless function (replaces server.js)
+│   └── chat.js        
 │── node_modules/
 │── .env
 │── .gitignore
