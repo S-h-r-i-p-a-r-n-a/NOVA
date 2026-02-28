@@ -3,8 +3,7 @@
 A modern, responsive web-based AI chatbot powered by Google Gemini AI. NOVA delivers natural conversations with a sleek, professional UI designed for both desktop and mobile users.
 
 ## 📸 Preview
-![Uploading Screenshot 2026-02-28 225959.png…]()
-
+<img width="1919" height="1096" alt="Screenshot 2026-02-28 225959" src="https://github.com/user-attachments/assets/391b0b43-bcfd-4ee3-b9db-050fef568ec5" />
 
 - Clean landing page
 - Floating chatbot button
