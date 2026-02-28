@@ -46,13 +46,15 @@ A modern, responsive web-based AI chatbot powered by Google Gemini AI. NOVA deli
 ```
 NOVA/
 │── .git/
+│── .vercel/
+│── api/
+│   └── chat.js        ← Serverless function (replaces server.js)
 │── node_modules/
 │── .env
 │── .gitignore
 │── index.html
 │── script.js
 │── style.css
-│── server.js
 │── package.json
 │── package-lock.json
 │── README.md
