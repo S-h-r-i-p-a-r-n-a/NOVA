@@ -41,7 +41,7 @@ const generateResponse = async (incomingChatLi) => {
     const messageElement = incomingChatLi.querySelector("p");
 
     try {
-        const res = await fetch("http://localhost:3000/api/chat", {
+        const res = await fetch("/api/chat", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

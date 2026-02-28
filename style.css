@@ -1,3 +1,6 @@
+/* ===============================
+   GLOBAL RESET & VARIABLES
+================================ */
 * {
   margin: 0;
   padding: 0;
@@ -5,19 +8,29 @@
   font-family: "Poppins", sans-serif;
 }
 
+:root {
+  --app-height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
 body {
   background: radial-gradient(circle at top, #eef2ff, #e5e7eb);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* HEADER */
+/* ===============================
+   HEADER
+================================ */
 .nova-header {
   text-align: center;
-  margin-top: 32px;
-  margin-bottom: 16px;
+  margin-top: 28px;
+  margin-bottom: 14px;
 }
 
 .nova-title {
@@ -28,16 +41,18 @@ body {
 }
 
 .nova-tagline {
-  margin-top: 12px;
+  margin-top: 10px;
   font-size: 15px;
   color: #4b5563;
 }
 
-/* CHAT CONTAINER */
+/* ===============================
+   CHAT CONTAINER
+================================ */
 .chat-container {
   width: 100%;
   max-width: 720px;
-  height: 75vh;                     /* 🔥 dynamic height */
+  height: calc(var(--app-height) - 120px);
   background: #ffffff;
   border-radius: 18px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
@@ -47,22 +62,28 @@ body {
   margin: 16px;
 }
 
-/* CHAT BOX */
+/* ===============================
+   CHAT BOX
+================================ */
 .chatbox {
   list-style: none;
-  padding: 20px;
-  flex: 1;                          /* 🔥 fills remaining space */
+  padding: 18px;
+  flex: 1;
   overflow-y: auto;
+  scroll-behavior: smooth;
+  background: linear-gradient(#ffffff, #f9fafb);
 }
 
-/* CHAT BUBBLES */
+/* ===============================
+   CHAT BUBBLES
+================================ */
 .chat {
   display: flex;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .chat p {
-  max-width: 75%;
+  max-width: min(85%, 420px);
   padding: 12px 16px;
   border-radius: 14px;
   font-size: 14px;
@@ -70,7 +91,9 @@ body {
   word-wrap: break-word;
 }
 
-/* INCOMING */
+/* ===============================
+   INCOMING
+================================ */
 .incoming span {
   color: #6d28d9;
   margin-right: 10px;
@@ -82,7 +105,9 @@ body {
   color: #111827;
 }
 
-/* OUTGOING */
+/* ===============================
+   OUTGOING
+================================ */
 .outgoing {
   justify-content: flex-end;
 }
@@ -92,14 +117,16 @@ body {
   color: white;
 }
 
-/* INPUT */
+/* ===============================
+   INPUT AREA
+================================ */
 .chat-input {
   display: flex;
   align-items: center;
-  padding: 14px;
+  padding: 10px 12px env(safe-area-inset-bottom);
   border-top: 1px solid #e5e7eb;
   background: #fafafa;
-  position: sticky;                /* 🔥 keyboard-safe */
+  position: sticky;
   bottom: 0;
 }
 
@@ -109,30 +136,32 @@ body {
   border: none;
   outline: none;
   font-size: 14px;
-  padding: 10px;
+  padding: 10px 12px;
   border-radius: 10px;
   background: #f3f4f6;
   max-height: 120px;
 }
 
 .chat-input span {
-  margin-left: 12px;
+  margin-left: 10px;
   cursor: pointer;
   color: #6d28d9;
   font-size: 26px;
-  transition: transform 0.2s ease;
-  min-width: 44px;                 /* 🔥 touch friendly */
+  min-width: 44px;
   min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.2s ease;
 }
 
 .chat-input span:hover {
   transform: scale(1.15);
 }
 
-/* SCROLLBAR */
+/* ===============================
+   SCROLLBAR
+================================ */
 .chatbox::-webkit-scrollbar {
   width: 6px;
 }
@@ -142,23 +171,25 @@ body {
   border-radius: 10px;
 }
 
-/* 📱 MOBILE */
+/* ===============================
+   MOBILE (PHONES)
+================================ */
 @media (max-width: 600px) {
   .nova-header {
-    margin-top: 20px;
+    margin: 12px 0;
   }
 
   .nova-title {
-    font-size: 28px;
-    letter-spacing: 2px;
+    font-size: 22px;
+    letter-spacing: 1px;
   }
 
   .nova-tagline {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .chat-container {
-    height: 90vh;                  /* full-screen feel */
+    height: var(--app-height);
     margin: 0;
     border-radius: 0;
   }
@@ -168,15 +199,18 @@ body {
   }
 
   .chat p {
-    max-width: 85%;
-    font-size: 14px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    padding: 10px 14px;
   }
 }
 
-/* 📱 TABLETS */
+/* ===============================
+   TABLETS
+================================ */
 @media (min-width: 601px) and (max-width: 1024px) {
   .chat-container {
-    height: 80vh;
+    height: calc(var(--app-height) - 100px);
   }
 
   .chat p {
@@ -184,7 +218,9 @@ body {
   }
 }
 
-/* 🖥️ LARGE SCREENS */
+/* ===============================
+   LARGE SCREENS
+================================ */
 @media (min-width: 1200px) {
   .chat-container {
     max-width: 800px;
