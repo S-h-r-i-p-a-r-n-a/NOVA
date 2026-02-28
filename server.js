@@ -1,7 +1,7 @@
-const express = require('express');
-const cors = require('cors');
-const { GoogleGenerativeAI } = require('@google/generative-ai');
-require('dotenv').config();
+const express = require("express");
+const cors = require("cors");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+require("dotenv").config();
 
 const app = express();
 const port = 3000;
@@ -9,74 +9,66 @@ const port = 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('.'));
+app.use(express.static(".")); // serve frontend
 
-// Initialize Gemini AI
+// Initialize Gemini
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-// Helper function to clean up the response text
+// Clean Gemini response
 const cleanResponse = (text) => {
     return text
-        .replace(/\*\*/g, '') // Remove markdown bold
-        .replace(/`/g, '') // Remove code ticks
-        .replace(/\n\n/g, '\n') // Replace double newlines with single
-        .trim(); // Remove extra whitespace
+        .replace(/\*\*/g, "")
+        .replace(/`/g, "")
+        .replace(/\n{2,}/g, "\n")
+        .trim();
 };
 
-// Chat endpoint
-app.post('/api/chat', async (req, res) => {
+// Chat API
+app.post("/api/chat", async (req, res) => {
     try {
         const { message } = req.body;
-        console.log('Received message:', message);
-
         if (!message) {
-            return res.status(400).json({ error: 'Message is required' });
+            return res.status(400).json({ error: "Message is required" });
         }
 
-        // Configure the model
-        const model = genAI.getGenerativeModel({ 
+        const model = genAI.getGenerativeModel({
             model: "gemini-2.5-flash",
             generationConfig: {
                 temperature: 0.7,
-                topK: 1,
                 topP: 0.8,
                 maxOutputTokens: 2048,
             },
         });
 
-        // Create a more conversational prompt
-        const prompt = `You are NOVA, a friendly and helpful AI assistant. Respond in a natural, conversational way to: ${message}`;
+        const prompt = `
+You are NOVA, a friendly AI chatbot.
+Reply clearly and conversationally.
 
-        // Generate content
+User: ${message}
+        `;
+
         const result = await model.generateContent(prompt);
         const response = await result.response;
-        let text = response.text();
 
-        // Clean up the response
+        // 🔥 THIS WAS THE BIG BUG — must await
+        let text = await response.text();
         text = cleanResponse(text);
-
-        console.log('Final text:', text);
 
         res.json({ reply: text });
     } catch (error) {
-        console.error('Detailed error:', error);
-        res.status(500).json({ 
-            error: 'Something went wrong with Gemini API',
-            details: error.message 
+        console.error("Gemini error:", error);
+        res.status(500).json({
+            error: "Gemini API failed",
+            details: error.message,
         });
     }
 });
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error('Server error:', err);
-    res.status(500).json({ 
-        error: 'Internal server error',
-        details: err.message
-    });
-});
-
+// Start server
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-    console.log('API Key loaded:', process.env.GEMINI_API_KEY ? 'Yes' : 'No');
+    console.log(`✅ Server running at http://localhost:${port}`);
+    console.log(
+        "🔑 Gemini API Key loaded:",
+        process.env.GEMINI_API_KEY ? "YES" : "NO"
+    );
 });
