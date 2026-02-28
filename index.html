@@ -1,53 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NOVA Chatbot</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOVA AI Assistant</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
 <body>
-  <div class="info-banner">
-    <h1>NOVA AI Assistant</h1>
-    <div class="info-cards">
-      <div class="info-card">
-        <span class="material-symbols-outlined">chat</span>
-        <p>Ask any question and get instant answers</p>
-      </div>
-      <div class="info-card">
-        <span class="material-symbols-outlined">tips_and_updates</span>
-        <p>Powered by advanced AI technology</p>
-      </div>
-    </div>
-  </div>
 
-  <!-- Chatbot Toggle Button -->
-  <button class="chatbot-toggler">
-    <span class="material-symbols-outlined">mode_comment</span>
-    <span class="material-symbols-outlined">close</span>
-  </button>
+  <!-- HEADER -->
+  <header class="nova-header">
+    <h1 class="nova-title">NOVA</h1>
+    <p class="nova-tagline">Your pixel-powered AI assistant ✨</p>
+  </header>
 
-  <!-- Chatbot Window -->
-  <div class="chatbot">
-    <header>
-      <h2>NOVA</h2>
-      <span class="close-btn material-symbols-outlined">close</span>
-    </header>
-
+  <!-- CHAT CONTAINER -->
+  <main class="chat-container">
     <ul class="chatbox">
       <li class="chat incoming">
         <span class="material-symbols-outlined">smart_toy</span>
-        <p>Hi there! 👋<br>How can I help you today?</p>
+        <p>Hi! I’m NOVA 🤖<br/>Ask me anything.</p>
       </li>
     </ul>
 
+    <!-- INPUT -->
     <div class="chat-input">
       <textarea placeholder="Type your message..." required></textarea>
-      <span id="send-btn" class="material-symbols-outlined">send</span>
+      <span class="material-symbols-outlined">send</span>
     </div>
-  </div>
+  </main>
 
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
